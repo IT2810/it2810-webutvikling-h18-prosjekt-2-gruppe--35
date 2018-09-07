@@ -1,0 +1,45 @@
+{
+    "romanticNationalism": {
+        "poemOne": [
+            "Line one Romantic Nationalism",
+            "Line two Romantic Nationalism"
+        ],
+        "poemTwo": [
+            "Text two Romantic Nationalism"
+        ],
+        "poemThree": [
+            "Text three Romantic Nationalism"
+        ],
+        "poemFour": [
+            "Text four Romantic Nationalism"
+        ]
+    },
+    "owenWilson": {
+        "poemOne": [
+            "Text one Owen Wilson"
+        ],
+        "poemTwo": [
+            "Text two  Owen Wilson"
+        ],
+        "poemThree": [
+            "Text three Owen Wilson"
+        ],
+        "poemFour": [
+            "Text four Owen Wilson"
+        ]
+    },
+    "shakespeare": {
+        "poemOne": [
+            "Text one shakespeare"
+        ],
+        "poemTwo": [
+            "Text two shakespeare"
+        ],
+        "poemThree": [
+            "Text three shakespeare"
+        ],
+        "poemFour": [
+            "Text four shakespeare"
+        ]
+    }
+}
