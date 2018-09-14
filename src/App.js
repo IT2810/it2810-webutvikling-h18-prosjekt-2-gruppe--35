@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from './logo.svg';
 import ImageTabs from './components/ImageTabs.jsx'
-import './App.css';
 
 class App extends Component {
     render() {

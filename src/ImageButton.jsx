@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ImageTabs.css';
 
 class ImageButton extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class ImageButton extends Component {
     };
 
     render() {
-    return <button onClick={() => alert(this.props.text)}>{this.state.name}</button>;
+    return <div className="tab" onClick={() => alert(this.props.text)}>{this.state.name}</div>;
   };
 }
 

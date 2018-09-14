@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import axios from "axios";
 import ImageButton from "./ImageButton.jsx";
 
+const instyle = {
+    display: 'flex',
+    flexDirection: 'column'
+}
+
 class ImageTabs extends Component {
     constructor() {
         super();
@@ -31,14 +36,12 @@ class ImageTabs extends Component {
 
     render() {
             return (
-                <div>
-                    <div>
-                        <ImageButton name="HomePage" text="Müller er dum" />
-                        <ImageButton name="One" text={this.state.romanticNationalism.poemOne} />
-                        <ImageButton name="Two" text={this.state.owenWilson.poemOne} />
-                        <ImageButton name="Three" text={this.state.shakespeare.poemOne} />
-                        <ImageButton name="Four" />
-                    </div>
+                <div style={instyle}>
+                    <ImageButton name="Home" text="Müller" />
+                    <ImageButton name="One" text={this.state.romanticNationalism.poemOne} />
+                    <ImageButton name="Two" text={this.state.owenWilson.poemOne} />
+                    <ImageButton name="Three" text={this.state.shakespeare.poemOne} />
+                    <ImageButton name="Four" />
                 </div>
             );
         }
