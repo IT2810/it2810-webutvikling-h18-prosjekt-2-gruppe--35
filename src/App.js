@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import ImageTabs from './ImageTabs.jsx'
-import './App.css';
 import {
     Route,
     NavLink,
@@ -16,43 +13,43 @@ import Four from "./Four";
 
 class App extends Component {
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Title of thing</h1>
-        <ImageTabs />
-      </div>
-    );
-/*
-        <HashRouter>
-         <div>
+    render() {
+        return (
+            <div className="App">
+                <h1>Title of thing</h1>
+                <ImageTabs/>
+            </div>
+        );
+        /*
+                <HashRouter>
+                 <div>
 
-          <h1>Web dev øving 2</h1>
+                  <h1>Web dev øving 2</h1>
 
-          <ul className="header">
-              <li><NavLink exact to="/">Home</NavLink></li>
-              <li><NavLink to="/one">One</NavLink></li>
-              <li><NavLink to="/two">Two</NavLink></li>
-              <li><NavLink to="/three">Three</NavLink></li>
-              <li><NavLink to="/four">Four</NavLink></li>
-          </ul>
+                  <ul className="header">
+                      <li><NavLink exact to="/">Home</NavLink></li>
+                      <li><NavLink to="/one">One</NavLink></li>
+                      <li><NavLink to="/two">Two</NavLink></li>
+                      <li><NavLink to="/three">Three</NavLink></li>
+                      <li><NavLink to="/four">Four</NavLink></li>
+                  </ul>
 
-          <div className="content">
-              <Route exact path="/" component={Home}/>
-              <Route path="/one" component={One}/>
-              <Route path="/two" component={Two}/>
-              <Route path="/three" component={Three}/>
-              <Route path="/four" component={Four}/>
+                  <div className="content">
+                      <Route exact path="/" component={Home}/>
+                      <Route path="/one" component={One}/>
+                      <Route path="/two" component={Two}/>
+                      <Route path="/three" component={Three}/>
+                      <Route path="/four" component={Four}/>
 
-          </div>
+                  </div>
 
-         </div>
+                 </div>
 
-        </HashRouter>
+                </HashRouter>
 
-  );
-*/
-  }
+          );
+        */
+    }
 }
 
 export default App;
