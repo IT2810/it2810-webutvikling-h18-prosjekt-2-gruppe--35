@@ -109,3 +109,5 @@ typings/
 /workspace.xml
 *.xml
 *.iml
+/.idea
+*.DS_Store
