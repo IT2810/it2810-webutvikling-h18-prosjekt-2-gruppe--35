@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Image from '../parts/Image.jsx';
-import "../ImageTabs.css";
+import "../ImageButton.css";
 
 class ImageButton extends Component {
     constructor() {
@@ -17,7 +17,7 @@ class ImageButton extends Component {
     }
 
     prepareFetch(imageNumber) {
-        var poem, img;
+        let poem, img;
         switch(imageNumber) {
             case "One":
                 poem = new Promise ((resolve) => resolve((this.fetchJson("../resources/poem.json").then(res => res.json()))));
