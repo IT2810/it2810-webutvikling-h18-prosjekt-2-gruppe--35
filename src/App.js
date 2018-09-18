@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import ImageTabs from './components/ImageTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
+import "./App.css";
 
-const imageDict = {
-                    Animals:'./resources/image/dyr',
+const imageDict = { Animals:'./resources/image/dyr',
                     BowtieLad:'./resources/image/sloyfegutt',
                     BlackAndWhite:'./resources/image/svarthvitt'};
 
@@ -34,21 +34,21 @@ class App extends Component {
         switch(category) {
             case 'image':
                 this.setState({imageCategory:category});
-                resourceUrl = this.iterateDictionary(id, imageDict);
+                resourceUrl = App.iterateDictionary(id, imageDict);
                 break;
             case 'text':
                 this.setState({textCategory:category});
-                resourceUrl = this.iterateDictionary(id, textDict);
+                resourceUrl = App.iterateDictionary(id, textDict);
                 break;
             case 'sound':
                 this.setState({soundCategory:category});
-                resourceUrl = this.iterateDictionary(id, soundDict);
+                resourceUrl = App.iterateDictionary(id, soundDict);
                 break;
         }
         console.log(resourceUrl);
     }
 
-    iterateDictionary(id, dict) {
+    static iterateDictionary(id, dict) {
         for (const option in dict) {
             if (id === option) {
                 return dict[option];
@@ -58,10 +58,12 @@ class App extends Component {
 
     render() {
         return (
-          <div className="App">
-            <h1>Title of thing</h1>
-            <ImageTabs />
-            <CheckboxTabs selectedCategory={this.pushSelectedCategory.bind(this)} />
+            <div className="App">
+                <h1>Title of thing</h1>
+                <div className="container">
+                    <ImageTabs className="ImageTabs" />
+                    <CheckboxTabs className="CheckboxTabs" selectedCategory={this.pushSelectedCategory.bind(this)} />
+                </div>
           </div>
         );
     }
