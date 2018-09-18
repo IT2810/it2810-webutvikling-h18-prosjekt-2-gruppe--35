@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import ButtonTabs from './components/ButtonTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './parts/ContentBox.jsx';
+import "./App.css";
 
 const imageDict = {
                     Animals:'/resources/images/dyr',
                     BowtieLad:'/resources/images/sloyfegutt',
                     BlackAndWhite:'/resources/images/svarthvitt'};
 
-const textDict = {  OwenWilson: '/resources/json/owenWilson.json',
+const textDict = {  OwenWilson: '/resources/json/wilfredOwen.json',
                     RomanticNationalism: 'resources/json/romanticNationalism.json',
                     Shakespeare: '/resources/json/shakespeare.json'};
 
@@ -21,7 +22,7 @@ class App extends Component {
         super();
         this.state = {
             text:null,
-            textNumber:0,
+            textNumber:null,
             imageCategory:null,
             imageUrl:null,
             soundUrl:null,
@@ -35,6 +36,7 @@ class App extends Component {
         switch(category) {
             case 'image':
                 resourceUrl = this.iterateDictionary(id, imageDict);
+                console.log("image");
                 this.setState({imageCategory:resourceUrl});
                 break;
             case 'text':
@@ -117,7 +119,7 @@ class App extends Component {
     }
 
     renderContentBox() {
-        if (this.state.text !== null && this.state.getImageUrl !== null) {
+        if (this.state.text !== null && this.state.imageUrl !== null && this.state.imageCategory !== null) {
             return (<ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()}/>);
         } else {
             return false;
@@ -128,10 +130,11 @@ class App extends Component {
         return (
           <div className="App">
             <h1>Title of thing</h1>
-            <ButtonTabs onSelected={this.getImageIndex.bind(this)} />
-            {this.renderContentBox()}
-            <CheckboxTabs selectedCategory={this.pushSelectedCategory.bind(this)} />
-          </div>
+            <div className="container">
+                <ButtonTabs className="ImageTabs" onSelected={this.getImageIndex.bind(this)} />
+                {this.renderContentBox()}
+                <CheckboxTabs className="CheckboxTabs" selectedCategory={this.pushSelectedCategory.bind(this)} />
+            </div>          </div>
         );
     }
 }

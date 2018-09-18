@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkbox from '../parts/checkbox.jsx';
+import Checkbox from '../parts/Checkbox.jsx';
 
 class CheckboxCategory extends Component {
     constructor() {
@@ -33,7 +33,9 @@ class CheckboxCategory extends Component {
         return(
             <React.Fragment>
                 <h3>{this.props.category}</h3>
-                {this.createCheckboxes()}
+                <div className="CheckboxCategory">
+                    {this.createCheckboxes()}
+                </div>
             </React.Fragment>
         );
     }

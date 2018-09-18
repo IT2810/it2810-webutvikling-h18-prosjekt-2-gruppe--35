@@ -1,0 +1,10 @@
+.App {
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
