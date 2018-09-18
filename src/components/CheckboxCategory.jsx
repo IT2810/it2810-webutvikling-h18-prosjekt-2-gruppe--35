@@ -14,6 +14,7 @@ class CheckboxCategory extends Component {
         for (const option in this.props.const.option) {
             checkboxes.push(
                 <Checkbox
+                    key={this.props.const.option[option]}
                     name={this.props.const.option[option]}
                     activeCheckbox={this.state.activeCheckbox}
                     onclick={this.checkboxSelection.bind(this)}
