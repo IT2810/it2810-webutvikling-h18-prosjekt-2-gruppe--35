@@ -12,7 +12,9 @@ const textDict = {  OwenWilson: './resources/json/owenWilson.json',
                     RomanticNationalism: './resources/json/romanticNationalism.json',
                     Shakespeare: './resources/json/shakespeare.json'};
 
-const soundDict = {};
+const soundDict = { ASMR: './resources/audio/ASMR',
+                    Sport: './resources/audio/sport',
+                    Music: './resources/audio/music'};
 
 
 class App extends Component {

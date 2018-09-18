@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Image from '../parts/Image.jsx';
+import Audio from '../parts/Audio.jsx';
 import "../ImageButton.css";
 
 class ImageButton extends Component {
@@ -8,6 +9,7 @@ class ImageButton extends Component {
         this.state = {
             imageUrl:"",
             poem:"",
+            soundUrl:"",
             loaded:false,
         }
     }
@@ -17,12 +19,13 @@ class ImageButton extends Component {
     }
 
     prepareFetch(imageNumber) {
-        let poem, img;
+        let poem, img, audio;
         switch(imageNumber) {
             case "One":
                 poem = new Promise ((resolve) => resolve((this.fetchJson("../resources/poem.json").then(res => res.json()))));
                 img = new Promise ((resolve) => resolve(this.fetchJson("../../resources/images/sloyfegutt/img1.jpg")));
-                Promise.all([poem, img]).then((result) => this.setState({poem:result[0].romanticNationalism.poemOne, imageUrl:result[1].url}));
+                audio = new Promise((resolve) => resolve(this.fetchJson('../../resources/audio/sport/sport_1.mp3')));
+                Promise.all([poem, img, audio]).then((result) => this.setState({poem:result[0].romanticNationalism.poemOne, imageUrl:result[1].url, audioUrl:result[1].url}));
                 break;
 
             case "Two":
@@ -49,7 +52,10 @@ class ImageButton extends Component {
                 <div>
                     <Image imageUrl={this.state.imageUrl}/>
                     <p>{this.state.poem}</p>
+
+                    <Audio audioUrl={this.state.audioUrl}/>
                 </div>
+
             );
         }
     }
