@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ButtonTabs from './components/ButtonTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './parts/ContentBox.jsx';
+import Audio from './parts/Audio.jsx';
 import "./App.css";
 
 const imageDict = {
@@ -14,9 +15,9 @@ const textDict = {  OwenWilson: '/resources/json/wilfredOwen.json',
                     RomanticNationalism: 'resources/json/romanticNationalism.json',
                     Shakespeare: '/resources/json/shakespeare.json'};
 
-const soundDict = { ASMR: './resources/audio/ASMR',
-                    Sport: './resources/audio/sport',
-                    Music: './resources/audio/music'};
+const soundDict = { ASMR: '/resources/audio/ASMR',
+                    Sport: '/resources/audio/sport',
+                    Music: '/resources/audio/music'};
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             text:null,
             textNumber:null,
             imageCategory:null,
+            soundCategory:null,
             imageUrl:null,
             soundUrl:null,
             soundNumber:0,
@@ -47,10 +49,10 @@ class App extends Component {
                 break;
             case 'sound':
                 resourceUrl = this.iterateDictionary(id, soundDict);
-                this.setState({soundUrl:resourceUrl});
+                this.setState({soundCategory:resourceUrl});
                 break;
             default:
-                this.setState({imageCategory:null, text:null, soundUrl:null});
+                this.setState({imageCategory:null, text:null, soundCategory:null});
                 break;
         }
     }
@@ -92,26 +94,31 @@ class App extends Component {
 
     getImageIndex(index) {
         index = parseInt(index, 10);
-        let url;
+        let url, urlSound;
         switch(index) {
             case 0:
                 break;
             case 1:
                 url = "/img1.jpg";
+                urlSound="/resources/audio/ASMR/asmr1.mp3";
                 break;
             case 2:
                 url = "/img2.jpg";
+                urlSound="/asmr2.mp3";
                 break;
             case 3:
                 url = "/img3.jpg";
+                urlSound="/asmr3.mp3";
                 break;
             case 4:
                 url = "/img4.jpg";
+                urlSound="/asmr4.mp3";
                 break;
             default:
                 url = "/";
         }
         this.setState({imageUrl:url});
+        this.setState({soundUrl:urlSound});
     }
 
     getImageUrl() {
@@ -120,9 +127,15 @@ class App extends Component {
         return (categoryUrl + imageUrl);
     }
 
+    getSoundUrl() {
+        const categoryUrl2 = this.state.soundCategory;
+        const soundUrl = this.state.soundUrl;
+        return (categoryUrl2 + soundUrl);
+    }
+
     renderContentBox() {
         if (this.state.text !== null && this.state.imageUrl !== null && this.state.imageCategory !== null) {
-            return (<ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()}/>);
+            return (<ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()} soundUrl={this.getSoundUrl()}/>);
         } else {
             return false;
         }
@@ -133,8 +146,9 @@ class App extends Component {
           <div className="App">
             <h1>Title of thing</h1>
             <div className="container">
-                <ButtonTabs className="ImageTabs" onSelected={this.getImageIndex.bind(this)} />
+                <ButtonTabs className="ImageTabs" onSelected={this.getImageIndex.bind(this)}/>
                 {this.renderContentBox()}
+                <Audio soundUrl={this.state.soundUrl}/>
                 <CheckboxTabs className="CheckboxTabs" selectedCategory={this.pushSelectedCategory.bind(this)} />
             </div>          </div>
         );
