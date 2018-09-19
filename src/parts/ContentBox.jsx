@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Image from '../parts/Image.jsx';
+import Audio from '../parts/Audio.jsx';
 
 class ContentBox extends Component {
 
@@ -8,6 +9,7 @@ class ContentBox extends Component {
             <React.Fragment>
                 <Image imageUrl={this.props.imageUrl}/>
                 <div>{this.props.textDiv}</div>
+
             </React.Fragment>
         );
     }

@@ -49,6 +49,7 @@ class App extends Component {
                 break;
             case 'sound':
                 resourceUrl = this.iterateDictionary(id, soundDict);
+                console.log("sound");
                 this.setState({soundCategory:resourceUrl});
                 break;
             default:
@@ -104,15 +105,15 @@ class App extends Component {
                 break;
             case 2:
                 url = "/img2.jpg";
-                urlSound="/asmr2.mp3";
+                urlSound="/resources/audio/ASMR/asmr2.mp3";
                 break;
             case 3:
                 url = "/img3.jpg";
-                urlSound="/asmr3.mp3";
+                urlSound="/resources/audio/ASMR/asmr3.mp3";
                 break;
             case 4:
                 url = "/img4.jpg";
-                urlSound="/asmr4.mp3";
+                urlSound="/resources/audio/ASMR/asmr4.mp3";
                 break;
             default:
                 url = "/";
@@ -128,14 +129,16 @@ class App extends Component {
     }
 
     getSoundUrl() {
-        const categoryUrl2 = this.state.soundCategory;
+        const categoryUrl = this.state.soundCategory;
         const soundUrl = this.state.soundUrl;
-        return (categoryUrl2 + soundUrl);
+        return (categoryUrl + soundUrl);
     }
 
     renderContentBox() {
         if (this.state.text !== null && this.state.imageUrl !== null && this.state.imageCategory !== null) {
-            return (<ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()} soundUrl={this.getSoundUrl()}/>);
+            return (<div><ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()}/>
+                <Audio soundUrl={this.getSoundUrl()}/></div>
+        );
         } else {
             return false;
         }
@@ -148,7 +151,6 @@ class App extends Component {
             <div className="container">
                 <ButtonTabs className="ImageTabs" onSelected={this.getImageIndex.bind(this)}/>
                 {this.renderContentBox()}
-                <Audio soundUrl={this.state.soundUrl}/>
                 <CheckboxTabs className="CheckboxTabs" selectedCategory={this.pushSelectedCategory.bind(this)} />
             </div>          </div>
         );
