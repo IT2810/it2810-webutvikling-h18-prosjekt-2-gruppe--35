@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkbox from '../parts/checkbox.jsx';
+import Checkbox from '../parts/Checkbox.jsx';
 
 class CheckboxCategory extends Component {
     constructor() {
@@ -14,6 +14,7 @@ class CheckboxCategory extends Component {
         for (const option in this.props.const.option) {
             checkboxes.push(
                 <Checkbox
+                    key={this.props.const.option[option]}
                     name={this.props.const.option[option]}
                     activeCheckbox={this.state.activeCheckbox}
                     onclick={this.checkboxSelection.bind(this)}
@@ -32,7 +33,9 @@ class CheckboxCategory extends Component {
         return(
             <React.Fragment>
                 <h3>{this.props.category}</h3>
-                {this.createCheckboxes()}
+                <div className="CheckboxCategory">
+                    {this.createCheckboxes()}
+                </div>
             </React.Fragment>
         );
     }

@@ -31,18 +31,18 @@ class CheckboxTabs extends Component {
     }
 
     pushSelectedImage(id) {
-        this.setState({image:id, category:'image'});
-        this.props.selectedCategory(id, this.state.category);
+        const imagePromise = new Promise ((resolve) => resolve(this.setState({image:id, category:'image'})));
+        Promise.all([imagePromise]).then((result) => this.props.selectedCategory(id, this.state.category));
     }
 
     pushSelectedText(id) {
-        this.setState({text:id, category:'text'});
-        this.props.selectedCategory(id, this.state.category);
+        const textPromise = new Promise ((resolve) => resolve(this.setState({text:id, category:'text'})));
+        Promise.all([textPromise]).then((result) => this.props.selectedCategory(id, this.state.category));
     }
 
     pushSelectedSound(id) {
-        this.setState({sound:id, category:'sound'});
-        this.props.selectedCategory(id, this.state.category);
+        const soundPromise = new Promise ((resolve) => resolve(this.setState({sound:id, category:'sound'})));
+        Promise.all([soundPromise]).then((result) => this.props.selectedCategory(id, this.state.category));
     }
 
     render() {
