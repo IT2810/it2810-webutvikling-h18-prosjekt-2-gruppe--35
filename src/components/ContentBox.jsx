@@ -17,11 +17,11 @@ class ContentBox extends Component {
             return homePage;
         } else {
             return (
-                <React.Fragment>
+                <div>
                     <Image imageUrl={this.props.imageUrl}/>
                     <div>{this.props.textDiv}</div>
-                    <Audio />
-                </React.Fragment>
+                    <Audio key={this.props.location} soundUrl={this.props.soundUrl}/>
+                </div>
             );
         }
     }

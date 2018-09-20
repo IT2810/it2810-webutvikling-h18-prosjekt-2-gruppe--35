@@ -9,7 +9,7 @@ const image = {
 
 const sound = {
     option: [
-        'Human Noises', 'Music', 'Noises'
+        'ASMR', 'Sport', 'Music'
     ]
 }
 

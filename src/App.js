@@ -14,7 +14,9 @@ const textDict = {  WilfredOwen: '/resources/json/wilfredOwen.json',
                     RomanticNationalism: 'resources/json/romanticNationalism.json',
                     Shakespeare: '/resources/json/shakespeare.json'};
 
-const soundDict = {};
+const soundDict = { ASMR: '/resources/audio/ASMR',
+                    Sport: '/resources/audio/sport',
+                    Music: '/resources/audio/music'};
 
 
 class App extends Component {
@@ -26,9 +28,9 @@ class App extends Component {
             index:0,
             imageCategory:null,
             textCategory:null,
+            soundCategory:null,
             imageUrl:null,
             soundUrl:null,
-            soundNumber:0,
         }
     }
 
@@ -43,14 +45,13 @@ class App extends Component {
             case 'text':
                 resourceUrl = this.iterateDictionary(id, textDict);
                 this.setState({textCategory:resourceUrl});
-                console.log(this.state.textCategory);
                 break;
             case 'sound':
                 resourceUrl = this.iterateDictionary(id, soundDict);
-                this.setState({soundUrl:resourceUrl});
+                this.setState({soundCategory:resourceUrl});
                 break;
             default:
-                this.setState({imageCategory:null, text:null, soundUrl:null});
+                this.setState({imageCategory:null, text:null, soundCategory:null});
                 break;
         }
         this.renderUpdate(this.state.index);
@@ -99,17 +100,21 @@ class App extends Component {
         index = parseInt(index, 10);
         let text;
         const imageUrl = this.updateImage(index);
+        const soundUrl = this.updateSound(index);
         const promise = this.fetchJsonPromise();
         Promise.all([promise]).then((result) => {
             text = this.getCorrectPoem(index, result[0]);
-            console.log(text);
-            this.setState({imageUrl:imageUrl, text:text, index:index});
+            this.setState({imageUrl:imageUrl, text:text, soundUrl:soundUrl, index:index});
         });
-
     }
 
     updateImage(index) {
         const url = "/img" + index + ".svg";
+        return url;
+    }
+
+    updateSound(index) {
+        const url = "/sound" + index + ".mp3";
         return url;
     }
 
@@ -121,7 +126,8 @@ class App extends Component {
                 <ButtonTabs className="ImageTabs" onSelected={this.renderUpdate.bind(this)} />
                 {this.renderContentBox()}
                 <CheckboxTabs className="CheckboxTabs" selectedCategory={this.updateCategory.bind(this)} />
-            </div>          </div>
+            </div>
+         </div>
         );
     }
 
@@ -129,7 +135,8 @@ class App extends Component {
         if (this.canRender()) {
             return (<ContentBox index={this.state.index}
                 textDiv={this.state.text}
-                imageUrl={this.getImageUrl()}/>);
+                imageUrl={this.getImageUrl()}
+                soundUrl={this.getSoundUrl()} />);
         } else {
             return <ContentBox index={this.state.index} />;
         }
@@ -146,6 +153,12 @@ class App extends Component {
         const categoryUrl = this.state.imageCategory;
         const imageUrl = this.state.imageUrl;
         return (categoryUrl + imageUrl);
+    }
+
+    getSoundUrl() {
+        const categoryUrl = this.state.soundCategory;
+        const soundUrl = this.state.soundUrl;
+        return (categoryUrl + soundUrl);
     }
 }
 
