@@ -6,7 +6,7 @@ class Image extends Component {
     }
 
     render() {
-        return fetchSvg()
+        return this.fetchSvg()
     }
 }
 

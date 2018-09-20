@@ -19,7 +19,13 @@ class ButtonTabs extends Component {
         const buttonNames = ["Home", "One", "Two", "Three", "Four"];
         const numberOfButtons = buttonNames.length
         for (let button = 0; button < numberOfButtons; button++) {
-            buttons.push(<Button handleClick={this.buttonClick.bind(this)} name={buttonNames[button]} index={button} activeButton={this.state.activeButton} />);
+            buttons.push(
+                <Button
+                    key={button}
+                    handleClick={this.buttonClick.bind(this)}
+                    name={buttonNames[button]}
+                    index={button}
+                    activeButton={this.state.activeButton} />);
         }
         return buttons;
     }
