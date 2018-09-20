@@ -99,13 +99,15 @@ class App extends Component {
     renderUpdate(index) {
         index = parseInt(index, 10);
         let text;
+        const indexPromise = new Promise((resolve) => resolve(this.setState({index:index})));
         const imageUrl = this.updateImage(index);
         const soundUrl = this.updateSound(index);
         const promise = this.fetchJsonPromise();
-        Promise.all([promise]).then((result) => {
+        Promise.all([promise, indexPromise]).then((result) => {
             text = this.getCorrectPoem(index, result[0]);
-            this.setState({imageUrl:imageUrl, text:text, soundUrl:soundUrl, index:index});
+            this.setState({imageUrl:imageUrl, text:text, soundUrl:soundUrl});
         });
+        console.log("lol")
     }
 
     updateImage(index) {
@@ -138,15 +140,16 @@ class App extends Component {
                 imageUrl={this.getImageUrl()}
                 soundUrl={this.getSoundUrl()} />);
         } else {
-            return <ContentBox index={this.state.index} />;
+            return <ContentBox render={false} />;
         }
     }
 
     canRender() {
-        return (this.props.imageCategory !== null
-                && this.props.soundCategory !== null
-                && this.props.textCategory !== null)
-                && this.props.index !==0;
+        return (this.state.imageCategory !== null
+                && this.state.soundCategory !== null
+                && this.state.textCategory !== null
+                && this.state.soundUrl !== null
+                && this.state.index !==0);
     }
 
     getImageUrl() {
