@@ -10,9 +10,9 @@ const imageDict = {
                     Gems:'/resources/images/gems',
                     BlackAndWhite:'/resources/images/black&white'};
 
-const textDict = {  WilfredOwen: '/resources/json/wilfredOwen.json',
-                    RomanticNationalism: 'resources/json/romanticNationalism.json',
-                    Shakespeare: '/resources/json/shakespeare.json'};
+const textDict = {  WilfredOwen: '/resources/json/wilfredOwen/',
+                    RomanticNationalism: 'resources/json/romanticNationalism/',
+                    Shakespeare: '/resources/json/shakespeare/'};
 
 const soundDict = { ASMR: '/resources/audio/ASMR',
                     Sport: '/resources/audio/sport',
@@ -65,28 +65,24 @@ class App extends Component {
         }
     }
 
-    fetchJsonPromise() {
-        const resourceUrl = this.state.textCategory;
-        if (!this.caching(resourceUrl)) {
-            const jsonPromise = new Promise ((resolve) =>
-                resolve(fetch(resourceUrl)
-                    .then(res => res.json())));
-            return jsonPromise;
-        }
+    fetchJsonPromise(filename) {
+        const resourceUrl = this.state.textCategory + filename;
+        const jsonPromise = new Promise ((resolve) =>
+            resolve(fetch(resourceUrl)
+                .then(res => res.json())));
+        return jsonPromise;
     }
 
-    getCorrectPoem(index, textObject) {
+    getPoem(poem) {
         const textPElements = [];
-        for (const poemNr in textObject) {
-            if (index === parseInt(poemNr, 10)) {
-                for (const lineNr in textObject[poemNr]) {
-                        textPElements.push(
-                                <p key={lineNr}>
-                                    {textObject[poemNr][lineNr]}
-                                </p>);
-                }
-            }
+        for (const lineNr in poem) {
+            console.log(poem[lineNr]);
+            textPElements.push(
+                <p key={lineNr}>
+                    {poem[lineNr]}
+                </p>);
         }
+
         return (<div>{textPElements}</div>);
     }
 
@@ -98,39 +94,41 @@ class App extends Component {
         return imagePromise;
     }
 
-    caching(resour) {
-        return false;
-    }
-
     renderUpdate(index) {
         index = parseInt(index, 10);
         let text, image;
         let imageUrl = null, soundUrl = null;
         let imagePromise, textPromise;
         const indexPromise = new Promise((resolve) => resolve(this.setState({index:index})));
-        if (this.state.imageCategory != null &&
-            this.state.textCategory != null &&
-            this.state.soundCategory != null &&
-            index != 0) {
-            imageUrl = this.updateImage(index);
+        if (this.state.imageCategory !== null &&
+            this.state.textCategory !== null &&
+            this.state.soundCategory !== null &&
+            index !== 0) {
+
+            imageUrl = this.getImageFilename(index);
             imagePromise = this.fetchSvg("" + this.state.imageCategory + imageUrl);
-            textPromise = this.fetchJsonPromise();
-            soundUrl = this.updateSound(index);
+            textPromise = this.fetchJsonPromise(this.getJsonFilename(index));
+            soundUrl = this.getSoundFilename(index);
         }
         Promise.all([textPromise, imagePromise, indexPromise]).then((result) => {
-            text = this.getCorrectPoem(index, result[0]);
+            text = this.getPoem(result[0]);
             image = result[1];
             this.setState({image:image, text:text, soundUrl:soundUrl});
         });
     }
 
-    updateImage(index) {
+    getImageFilename(index) {
         const url = "/img" + index + ".svg";
         return url;
     }
 
-    updateSound(index) {
+    getSoundFilename(index) {
         const url = "/sound" + index + ".mp3";
+        return url;
+    }
+
+    getJsonFilename(index) {
+        const url = "text" + index + ".json";
         return url;
     }
 
