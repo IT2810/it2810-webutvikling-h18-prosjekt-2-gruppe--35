@@ -5,7 +5,7 @@ class ButtonTabs extends Component {
     constructor() {
         super();
         this.state = {
-            activeButton:null,
+            activeButton:"Home",
         }
     }
 
