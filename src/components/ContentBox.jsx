@@ -13,7 +13,8 @@ const homePage = <p>This is the homepage. To do something else you have
 class ContentBox extends Component {
 
     render() {
-        if (this.props.index === 0) {
+        if (this.props.index === 0 ||
+            this.props.render === false) {
             return homePage;
         } else {
             return (
