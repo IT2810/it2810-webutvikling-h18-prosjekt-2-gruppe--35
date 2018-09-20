@@ -75,17 +75,15 @@ class App extends Component {
         }
     }
 
-    fetchJson(resourceUrl) {
-        return fetch(resourceUrl).then(res => res.json());
-    }
-
-
     getCorrectPoem(index, textObject) {
         const textPElements = [];
         for (const poemNr in textObject) {
             if (index === parseInt(poemNr, 10)) {
                 for (const lineNr in textObject[poemNr]) {
-                        textPElements.push(<p>{textObject[poemNr][lineNr]}</p>);
+                        textPElements.push(
+                                <p key={lineNr}>
+                                    {textObject[poemNr][lineNr]}
+                                </p>);
                 }
             }
         }
@@ -107,7 +105,6 @@ class App extends Component {
             text = this.getCorrectPoem(index, result[0]);
             this.setState({imageUrl:imageUrl, text:text, soundUrl:soundUrl});
         });
-        console.log("lol")
     }
 
     updateImage(index) {
