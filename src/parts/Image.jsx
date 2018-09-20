@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
 class Image extends Component {
+    fetchSvg() {
+        return false;
+    }
+
     render() {
-        return <img src={this.props.imageUrl} alt="text"/>
+        return fetchSvg()
     }
 }
 
