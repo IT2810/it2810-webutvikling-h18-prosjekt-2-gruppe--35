@@ -3,7 +3,7 @@ import CheckboxCategory from './CheckboxCategory';
 
 const image = {
     option: [
-        'Animals', 'Bowtie Lad', 'Black And White'
+        'Animals', 'Gems', 'Black And White'
     ]
 }
 
@@ -15,7 +15,7 @@ const sound = {
 
 const text = {
     option: [
-        'Owen Wilson', 'Romantic Nationalism', 'Shakespeare'
+        'Wilfred Owen', 'Romantic Nationalism', 'Shakespeare'
     ]
 }
 
