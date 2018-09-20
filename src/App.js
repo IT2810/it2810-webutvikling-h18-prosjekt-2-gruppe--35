@@ -108,20 +108,18 @@ class App extends Component {
         let imageUrl = null, soundUrl = null;
         let imagePromise, textPromise;
         const indexPromise = new Promise((resolve) => resolve(this.setState({index:index})));
-        if (this.state.imageCategory != null) {
+        if (this.state.imageCategory != null &&
+            this.state.textCategory != null &&
+            this.state.soundCategory != null &&
+            index != 0) {
             imageUrl = this.updateImage(index);
             imagePromise = this.fetchSvg("" + this.state.imageCategory + imageUrl);
-        }
-        if (this.state.textCategory != null) {
             textPromise = this.fetchJsonPromise();
-        }
-        if (this.state.soundCategory != null) {
             soundUrl = this.updateSound(index);
         }
         Promise.all([textPromise, imagePromise, indexPromise]).then((result) => {
             text = this.getCorrectPoem(index, result[0]);
             image = result[1];
-            console.log(image);
             this.setState({image:image, text:text, soundUrl:soundUrl});
         });
     }
