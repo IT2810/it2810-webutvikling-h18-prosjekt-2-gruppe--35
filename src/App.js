@@ -29,7 +29,7 @@ class App extends Component {
             imageCategory:null,
             textCategory:null,
             soundCategory:null,
-            imageUrl:null,
+            image:null,
             soundUrl:null,
         }
     }
@@ -90,20 +90,39 @@ class App extends Component {
         return (<div>{textPElements}</div>);
     }
 
+    fetchSvg(imageUrl) {
+        const imagePromise = new Promise((resolve) => resolve(
+            fetch(imageUrl)
+                .then(res => res.text())
+            ));
+        return imagePromise;
+    }
+
     caching(resour) {
         return false;
     }
 
     renderUpdate(index) {
         index = parseInt(index, 10);
-        let text;
+        let text, image;
+        let imageUrl = null, soundUrl = null;
+        let imagePromise, textPromise;
         const indexPromise = new Promise((resolve) => resolve(this.setState({index:index})));
-        const imageUrl = this.updateImage(index);
-        const soundUrl = this.updateSound(index);
-        const promise = this.fetchJsonPromise();
-        Promise.all([promise, indexPromise]).then((result) => {
+        if (this.state.imageCategory != null) {
+            imageUrl = this.updateImage(index);
+            imagePromise = this.fetchSvg("" + this.state.imageCategory + imageUrl);
+        }
+        if (this.state.textCategory != null) {
+            textPromise = this.fetchJsonPromise();
+        }
+        if (this.state.soundCategory != null) {
+            soundUrl = this.updateSound(index);
+        }
+        Promise.all([textPromise, imagePromise, indexPromise]).then((result) => {
             text = this.getCorrectPoem(index, result[0]);
-            this.setState({imageUrl:imageUrl, text:text, soundUrl:soundUrl});
+            image = result[1];
+            console.log(image);
+            this.setState({image:image, text:text, soundUrl:soundUrl});
         });
     }
 
@@ -134,7 +153,7 @@ class App extends Component {
         if (this.canRender()) {
             return (<ContentBox index={this.state.index}
                 textDiv={this.state.text}
-                imageUrl={this.getImageUrl()}
+                image={this.state.image}
                 soundUrl={this.getSoundUrl()} />);
         } else {
             return <ContentBox render={false} />;
@@ -147,12 +166,6 @@ class App extends Component {
                 && this.state.textCategory !== null
                 && this.state.soundUrl !== null
                 && this.state.index !==0);
-    }
-
-    getImageUrl() {
-        const categoryUrl = this.state.imageCategory;
-        const imageUrl = this.state.imageUrl;
-        return (categoryUrl + imageUrl);
     }
 
     getSoundUrl() {

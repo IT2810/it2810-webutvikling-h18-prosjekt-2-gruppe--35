@@ -19,7 +19,7 @@ class ContentBox extends Component {
         } else {
             return (
                 <div>
-                    <Image imageUrl={this.props.imageUrl}/>
+                    <Image image={this.props.image}/>
                     <div>{this.props.textDiv}</div>
                     <Audio key={this.props.location} soundUrl={this.props.soundUrl}/>
                 </div>
