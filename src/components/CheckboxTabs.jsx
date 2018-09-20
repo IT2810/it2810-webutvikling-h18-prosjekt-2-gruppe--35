@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import CheckboxCategory from './CheckboxCategory';
 
+/*
+*   The responsibility of CheckboxTabs.jsx is to keep track of which one of the
+*   categories's option has been selected and then forward it to the parent
+*   (App.js). 
+*/
+
+// The names of all the image, sound, and text options.
 const image = {
     option: [
         'Animals', 'Gems', 'Black And White'
@@ -30,6 +37,7 @@ class CheckboxTabs extends Component {
         }
     }
 
+    //Tells the parent which checkbox in each category has been selected.
     pushSelectedImage(id) {
         const imagePromise = new Promise ((resolve) => resolve(this.setState({image:id, category:'image'})));
         Promise.all([imagePromise]).then((result) => this.props.selectedCategory(id, this.state.category));

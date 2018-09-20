@@ -5,6 +5,14 @@ import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './components/ContentBox.jsx';
 import "./App.css";
 
+/*
+*   The App.js class is the top level class which has the responisbility of
+*   receiving information about what has been selected and throw that back down
+*   to its relevant children (ContentBox.jsx). It also has the responisbility to
+*   load what is needed.
+*/
+
+//The relative urls for all of the resources used
 const imageDict = {
                     Animals:'/resources/images/animals',
                     Gems:'/resources/images/gems',
@@ -23,17 +31,18 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            textObject:null,
-            text:null,
-            index:0,
+            poemText:null,
+            buttonIndex:0, //the index of the current button from the left sidebar
             imageCategory:null,
             textCategory:null,
             soundCategory:null,
-            image:null,
-            soundUrl:null,
+            imageXml:null,
+            soundFilename:null,
         }
     }
 
+    //When CheckboxTabs.jsx sends an update about a new category this function
+    //updates the current state which will then reload the site.
     updateCategory(id, category) {
         id = id.replace(/ /g, '');
         let resourceUrl;
@@ -57,6 +66,7 @@ class App extends Component {
         this.renderUpdate(this.state.index);
     }
 
+    //Iterates through the constants declared at the top to look for the correct path.
     iterateDictionary(id, dict) {
         for (const option in dict) {
             if (id === option) {
@@ -65,6 +75,7 @@ class App extends Component {
         }
     }
 
+    //Given a filename it finds the category and creates a promise reading the json file.
     fetchJsonPromise(filename) {
         const resourceUrl = this.state.textCategory + filename;
         const jsonPromise = new Promise ((resolve) =>
@@ -73,10 +84,10 @@ class App extends Component {
         return jsonPromise;
     }
 
+    //Given a json file with a single array it Iterates through it and creates a <p> element
     getPoem(poem) {
         const textPElements = [];
         for (const lineNr in poem) {
-            console.log(poem[lineNr]);
             textPElements.push(
                 <p key={lineNr}>
                     {poem[lineNr]}
@@ -86,6 +97,7 @@ class App extends Component {
         return (<div>{textPElements}</div>);
     }
 
+    //given the relative image url it creates a promise retrieving the xml of the file
     fetchSvg(imageUrl) {
         const imagePromise = new Promise((resolve) => resolve(
             fetch(imageUrl)
@@ -94,29 +106,31 @@ class App extends Component {
         return imagePromise;
     }
 
+    //Given an index of the buttons from the sidebar it will launch and load the correct files.
     renderUpdate(index) {
         index = parseInt(index, 10);
-        let text, image;
+        //Seperating the lets for clarity about what they are used for.
+        let poem, image;
         let imageUrl = null, soundUrl = null;
-        let imagePromise, textPromise;
+        let imagePromise, poemPromise;
         const indexPromise = new Promise((resolve) => resolve(this.setState({index:index})));
+        //If all the categories are selected and an index chosen it will load the files.
         if (this.state.imageCategory !== null &&
-            this.state.textCategory !== null &&
             this.state.soundCategory !== null &&
-            index !== 0) {
-
+            this.state.textCategory !== null) {
             imageUrl = this.getImageFilename(index);
             imagePromise = this.fetchSvg("" + this.state.imageCategory + imageUrl);
-            textPromise = this.fetchJsonPromise(this.getJsonFilename(index));
+            poemPromise = this.fetchJsonPromise(this.getJsonFilename(index));
             soundUrl = this.getSoundFilename(index);
         }
-        Promise.all([textPromise, imagePromise, indexPromise]).then((result) => {
-            text = this.getPoem(result[0]);
+        Promise.all([poemPromise, imagePromise, indexPromise]).then((result) => {
+            poem = this.getPoem(result[0]);
             image = result[1];
-            this.setState({image:image, text:text, soundUrl:soundUrl});
+            this.setState({imageXml:image, poemText:poem, soundFilename:soundUrl});
         });
     }
 
+    //Gets the correct file names
     getImageFilename(index) {
         const url = "/img" + index + ".svg";
         return url;
@@ -132,6 +146,13 @@ class App extends Component {
         return url;
     }
 
+    //Concatenates the relative url and the filename.
+    getSoundUrl() {
+        const soundCategory = this.state.soundCategory;
+        const filename = this.state.soundFilename;
+        return (soundCategory + filename);
+    }
+
     render() {
         return (
           <div className="App">
@@ -145,29 +166,25 @@ class App extends Component {
         );
     }
 
+    //Creates the contentbox based on if it should or should not render all the media files.
     renderContentBox() {
         if (this.canRender()) {
             return (<ContentBox index={this.state.index}
-                textDiv={this.state.text}
-                image={this.state.image}
+                textDiv={this.state.poemText}
+                image={this.state.imageXml}
                 soundUrl={this.getSoundUrl()} />);
         } else {
             return <ContentBox render={false} />;
         }
     }
 
+    //Returns a boolean based on if it should render the media files
     canRender() {
         return (this.state.imageCategory !== null
                 && this.state.soundCategory !== null
                 && this.state.textCategory !== null
-                && this.state.soundUrl !== null
+                && this.state.soundFilename !== null
                 && this.state.index !==0);
-    }
-
-    getSoundUrl() {
-        const categoryUrl = this.state.soundCategory;
-        const soundUrl = this.state.soundUrl;
-        return (categoryUrl + soundUrl);
     }
 }
 

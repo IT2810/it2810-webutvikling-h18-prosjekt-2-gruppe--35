@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import Image from '../parts/Image.jsx';
 import Audio from '../parts/Audio.jsx';
 
+/*
+*   ContentBox is the 'box' displaying the audio, text and image. It uses the
+*   Image.jsx and Audio.jsx files. If it doesn't display audio, text, and an
+*   image it will display the homepage. That is only when the homepage button is
+*   pressed or not one of all the three categories are chosen.
+*   The if line in the render() function does that check.
+*/
+
 const homePage = <p>This is the homepage. To do something else you have
                     to select one of either three options in all three
                     categories and click on a button from 1-4. That is; One
