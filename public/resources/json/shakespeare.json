@@ -1,14 +1,60 @@
 {
-    "poemOne": [
-        "Text one shakespeare"
+    "1": [
+        "Over hill, over dale,",
+        "Thorough bush, thorough brier,",
+        "Over park, over pale,",
+        "Thorough flood, thorough fire!",
+        "I do wander everywhere,",
+        "Swifter than the moon's sphere;",
+        "And I serve the Fairy Queen,",
+        "To dew her orbs upon the green;",
+        "The cowslips tall her pensioners be;",
+        "In their gold coats spots you see;",
+        "Those be rubies, fairy favours;",
+        "In those freckles live their savours;",
+        "I must go seek some dewdrops here,",
+        "And hang a pearl in every cowslip's ear."
     ],
-    "poemTwo": [
-        "Text two shakespeare"
+    "2": [
+        "Come away, come away, death,",
+        "And in sad cypres let me be laid;",
+        "Fly away, fly away, breath;",
+        "I am slain by a fair cruel maid.",
+        "My shroud of white, stuck all with yew,",
+        "O prepare it!",
+        "My part of death, no one so true",
+        "Did share it.",
+
+        "Not a flower, not a flower sweet,",
+        "On my black coffin let there be strown;",
+        "Not a friend, not a friend greet",
+        "My poor corse, where my bones shall be thrown:",
+        "A thousand thousand sighs to save,",
+        "Lay me, O, where",
+        "Sad true lover never find my grave",
+        "To weep there!"
     ],
-    "poemThree": [
-        "Text three shakespeare"
+    "3": [
+        "Hark! hark! the lark at heaven's gate sings",
+        "And Phoebus 'gins arise,",
+        "His steeds to water at those springs",
+        "On chalic'd flowers that lies;",
+        "And winking Mary-buds begin",
+        "To ope their golden eyes;",
+        "With everything that pretty is,",
+        "My lady sweet, arise:",
+        "Arise, arise!"
     ],
-    "poemFour": [
-        "Text four shakespeare"
+    "4": [
+        "Tell me where is Fancy bred,",
+        "Or in the heart or in the head?",
+        "How begot, how nourished?",
+        "Reply, reply.",
+        "It is engender'd in the eyes,",
+        "With gazing fed; and Fancy dies",
+        "In the cradle where it lies.",
+        "Let us all ring Fancy's knell:",
+        "I'll begin it,--Ding, dong, bell.",
+        "All. Ding, dong, bell."
     ]
 }
