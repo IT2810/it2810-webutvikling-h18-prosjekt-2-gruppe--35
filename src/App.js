@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import ButtonTabs from './components/ButtonTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './parts/ContentBox.jsx';
@@ -136,7 +135,7 @@ class App extends Component {
 
     renderContentBox() {
         if (this.state.text !== null && this.state.imageUrl !== null && this.state.imageCategory !== null) {
-            return (<div><ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()}/>
+            return (<div id={"content"}><ContentBox textDiv={this.state.text} imageUrl={this.getImageUrl()}/>
                 <Audio soundUrl={this.getSoundUrl()}/></div>
         );
         } else {
@@ -147,7 +146,8 @@ class App extends Component {
     render() {
         return (
           <div className="App">
-            <h1>Title of thing</h1>
+              <object data="logo.svg" type="image/svg+xml">
+              </object>
             <div className="container">
                 <ButtonTabs className="ImageTabs" onSelected={this.getImageIndex.bind(this)}/>
                 {this.renderContentBox()}

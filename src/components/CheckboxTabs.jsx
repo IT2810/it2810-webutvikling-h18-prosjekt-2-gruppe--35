@@ -47,7 +47,7 @@ class CheckboxTabs extends Component {
 
     render() {
         return (
-            <div>
+            <div id={"test2"}>
                 <CheckboxCategory onSelected={this.pushSelectedImage.bind(this)} category="Image" const={image}/>
                 <CheckboxCategory onSelected={this.pushSelectedText.bind(this)} category="Text" const={text}/>
                 <CheckboxCategory onSelected={this.pushSelectedSound.bind(this)} category="Sound" const={sound}/>

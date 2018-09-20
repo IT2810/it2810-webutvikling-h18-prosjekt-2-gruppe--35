@@ -33,7 +33,7 @@ class CheckboxCategory extends Component {
         return(
             <React.Fragment>
                 <h3>{this.props.category}</h3>
-                <div className="CheckboxCategory">
+                <div id={"test3"} className="CheckboxCategory">
                     {this.createCheckboxes()}
                 </div>
             </React.Fragment>

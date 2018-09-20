@@ -16,7 +16,7 @@ class ButtonTabs extends Component {
 
     render() {
             return (
-                <div>
+                <div id="test">
                     <Button name="Home" handleClick={this.buttonClick.bind(this)} index="0" activeButton={this.state.activeButton}/>
                     <Button name="One" handleClick={this.buttonClick.bind(this)} index="1" activeButton={this.state.activeButton}/>
                     <Button name="Two" handleClick={this.buttonClick.bind(this)} index="2" activeButton={this.state.activeButton}/>
