@@ -23,6 +23,11 @@ Det er App.js som har hovedansvaret for hele applikasjonen og fordeler korrekt i
 
 Den informasjonen som blir sendt opp fra ButtonTabs og CheckboxTabs angående hvilke filer som skal bli lastet inn sender Apps.js ned til ContentBox etter de har blitt lastet ned via flere funksjoner i Apps.js.
 
+Vi bruker localStorage for å sikre oss at filene ikke lastes på nytt når man bytter mellom tabs. Vi lagrer filene som tekststrenger med en key som er pathen til elementene. 
+
 ## CSS
+Siden er responsiv ved at bildene og elementene skalerer med størrelsen på nettleseren. Vi bruker flexbox og media queries til å endre på layouten til siden. 
 
 ## Testing
+Siden er testet i Firefox og Chrome. På Chrome hendte det helt tilfeldig at det oppsto en feil som breaka siden ved innlasting, men når man lastet inn på nytt kom ikke feilen tilbake.
+Vi har hatt problemer med at noen av bildene ble borte i en nettleser, men ikke en annen. I tillegg var det ikke de samme bildene som forsvant. 
