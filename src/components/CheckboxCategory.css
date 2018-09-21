@@ -1,6 +1,18 @@
-.CheckboxCategory {
-    display: flex;
-    flex-direction: column;
-    height: 20%;
-    justify-content: space-between;
+CheckboxCategory {
+    height: 10%;
+    z-index: 3;
+
+}
+#CheckboxCategory{
+    background-color: darkgray;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-top: -0.6rem;
+
+    z-index: 3;
+
+}
+
+#CheckboxCategory:hover{
+    background-color: dimgrey;
 }

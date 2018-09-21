@@ -10,12 +10,14 @@ class Audio extends Component {
     render() {
         if (this.props.soundUrl !== undefined) {
             return (
-                <audio
-                    key={this.props.soundUrl}
-                    controls>
-                        <source src={this.props.soundUrl}/>
-                        Your browser does not support the audio element.
-                </audio>
+                <div id={"audio"}>
+                    <audio
+                        key={this.props.soundUrl}
+                        controls>
+                            <source src={this.props.soundUrl}/>
+                            Your browser does not support the audio element.
+                    </audio>
+                </div>
             );
         } else {
             return false;

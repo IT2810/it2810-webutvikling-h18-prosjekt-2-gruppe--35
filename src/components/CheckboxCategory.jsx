@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Checkbox from '../parts/Checkbox.jsx';
+import "./CheckboxCategory.css";
 
 /*
 *   The CheckboxCategory.jsx file has the responsibility of grouping all of the
@@ -40,7 +41,7 @@ class CheckboxCategory extends Component {
         return(
             <React.Fragment>
                 <h3>{this.props.category}</h3>
-                <div className="CheckboxCategory">
+                <div  id={"CheckboxCategory"} className="CheckboxCategory">
                     {this.createCheckboxes()}
                 </div>
             </React.Fragment>

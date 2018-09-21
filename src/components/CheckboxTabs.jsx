@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckboxCategory from './CheckboxCategory';
+import "./CheckboxTabs.css";
 
 /*
 *   The responsibility of CheckboxTabs.jsx is to keep track of which one of the
@@ -55,7 +56,7 @@ class CheckboxTabs extends Component {
 
     render() {
         return (
-            <div>
+            <div id={"CheckboxTabs"}>
                 <CheckboxCategory onSelected={this.pushSelectedImage.bind(this)} category="Image" const={image}/>
                 <CheckboxCategory onSelected={this.pushSelectedText.bind(this)} category="Text" const={text}/>
                 <CheckboxCategory onSelected={this.pushSelectedSound.bind(this)} category="Sound" const={sound}/>

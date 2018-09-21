@@ -11,6 +11,8 @@
     display: inline-block;
     text-align: center;
     width: 5ch;
+
+    border-radius: 0.2rem;
 }
 
 .active {
@@ -26,8 +28,14 @@
     display: inline-block;
     text-align: center;
     width: 5ch;
+
+    border-radius: 0.2rem;
+}
+
+.tab:hover{
+    background-color: #0099FF;
 }
 
 .tab:active {
-    background-color: #0099FF;
+    background-color: #007acc;
 }
