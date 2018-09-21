@@ -139,15 +139,15 @@ class App extends Component {
                 image = result[1];
                 localStorage.setItem(imgkey, image);
             }
-            // if (this.keyInLocalStorage(poemkey)) {
-            //     // console.log(poemkey);
-            //     poem = localStorage.getItem(poemkey);
-            // }
-            // else {
-            //     poem = this.getPoem(result[0]);
-            //     console.log(poem);
-            //     localStorage.setItem(poemkey, poem);
-            // }
+            if (this.keyInLocalStorage(poemkey)) {
+                // console.log(poemkey);
+                poem = localStorage.getItem(poemkey);
+            }
+            else {
+                poem = this.getPoem(result[0]);
+                console.log(poem);
+                localStorage.setItem(poemkey, poem);
+            }
             poem = this.getPoem(result[0]);
             this.setState({imageXml: image, poemText: poem, soundFilename: soundUrl});
         });
