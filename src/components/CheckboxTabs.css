@@ -5,3 +5,13 @@
 
     z-index: 3;
 }
+
+@media only screen and (max-width: 600px) {
+    #CheckboxTabs {
+        position: absolute;
+        margin-left: 35%;
+        margin-top: 70rem;
+
+        z-index: 3;
+    }
+}
