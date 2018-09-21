@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
 import ButtonTabs from './components/ButtonTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './components/ContentBox.jsx';
@@ -189,7 +188,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Title of thing</h1>
+                <object data="/resources/logo.svg" type="image/svg+xml">
+                </object>
                 <div className="container">
                     <ButtonTabs className="ImageTabs" onSelected={this.renderUpdate.bind(this)}/>
                     {this.renderContentBox()}
@@ -202,10 +202,11 @@ class App extends Component {
     //Creates the contentbox based on if it should or should not render all the media files.
     renderContentBox() {
         if (this.canRender()) {
-            return (<ContentBox index={this.state.index}
+            return (<div id={"content"}><ContentBox index={this.state.index}
                                 textDiv={this.state.poemText}
                                 image={this.state.imageXml}
-                                soundUrl={this.getSoundUrl()}/>);
+                                soundUrl={this.getSoundUrl()}/>
+            </div>);
         } else {
             return <ContentBox render={false}/>;
         }

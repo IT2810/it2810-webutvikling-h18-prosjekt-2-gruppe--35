@@ -1,0 +1,7 @@
+#CheckboxTabs{
+    position: fixed;
+    margin-left: 82%;
+    margin-top: 2.8rem;
+
+    z-index: 3;
+}

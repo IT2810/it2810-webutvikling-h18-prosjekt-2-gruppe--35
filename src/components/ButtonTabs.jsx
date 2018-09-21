@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from "../parts/Button.jsx";
+import "./ButtonTabs.css";
 
 /*
 *   The ButtonTabs.jsx file has the responisbility of telling the parent (App.js)
@@ -40,7 +41,9 @@ class ButtonTabs extends Component {
     render() {
             return (
                 <div>
+                                <div id="ButtonTabs">
                     {this.createButtons()}
+                    </div>
                 </div>
             );
         }
