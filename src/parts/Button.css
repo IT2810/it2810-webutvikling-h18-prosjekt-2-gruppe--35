@@ -28,6 +28,8 @@
     display: inline-block;
     text-align: center;
     width: 5ch;
+
+    border-radius: 0.2rem;
 }
 
 .tab:hover{

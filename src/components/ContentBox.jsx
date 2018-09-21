@@ -23,12 +23,17 @@ class ContentBox extends Component {
     render() {
         if (this.props.index === 0 ||
             this.props.render === false) {
-            return homePage;
+            return (
+                <div id={"homeContent"}>
+                    <div>{homePage}</div>
+                    <Audio key={this.props.location} soundUrl={this.props.soundUrl}/>
+                </div>
+            );
         } else {
             return (
                 <div>
                     <Image image={this.props.image}/>
-                    <div>{this.props.textDiv}</div>
+                    <div id={"text"}>{this.props.textDiv}</div>
                     <Audio key={this.props.location} soundUrl={this.props.soundUrl}/>
                 </div>
             );

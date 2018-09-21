@@ -9,74 +9,49 @@ h1 {
     margin: 2rem 0;
     font-size: 4vw;
 }
-h3{
+
+h3 {
     background-color: darkorange;
     border-radius: 2rem;
     padding-left: 1rem;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
-#content{
+
+#content {
     background-color: #FFFFFF;
     border-radius: 1rem;
     margin: 2rem 5.5rem;
     padding: 2rem 6rem;
-    max-width: 56%;
+    max-width: 59%;
+    width: 59%;
 }
-object{
+
+#homeContent {
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    margin: 2rem 5.5rem;
+    padding: 4rem 6rem 16rem 6rem;
+    max-width: 59%;
+    width: 59%;
+}
+
+#text{
+    text-align: center;
+}
+
+.graphic{
+    text-align: center;
+    /*max-height: 600px;*/
+}
+
+#audio {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+object {
     width: 10rem;
     margin-left: 42%;
 }
-/*
-ul.header li {
-    background-color: #111;
-    z-index: 2;
-    padding: 0px;
-    list-style: none;
-    margin: 20px;
-    margin-top: 30px;
-}
-
-ul.header {
-    background-color: transparent;
-    padding: 0;
-    z-index: 2;
-    position: absolute;
-    margin-left: 60px;
-    margin-top: 60px;
-}
-
-ul.header li a {
-    z-index: 2;
-    color: #FFF;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 20px;
-    display: inline-block;
-}
-
-.content {
-    background-color: #FFF;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin-right: 80px;
-    margin-left: 120px;
-    margin-top: 40px;
-    margin-bottom: 80px;
-    padding-left: 80px;
-}
-
-.content h2 {
-    padding: 0;
-    margin: 0;
-}
-
-.content li {
-    margin-bottom: 10px;
-}
-
-.active {
-    background-color: #0099FF;
-}
-*/
