@@ -1,0 +1,6 @@
+input[type="checkbox"] {
+    -moz-appearance: radio;
+    -webkit-appearance: radio;
+
+    margin-right: 0.5rem;
+}

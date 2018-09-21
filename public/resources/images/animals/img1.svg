@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 30 200 250">
+    <!--Right face-->
+    <polygon points="100,100 100,60 130,65 150,90" style="fill:#8c5602"></polygon>
+    <polygon points="150,90 100,115 100,100" style="fill:#593701"></polygon>
+    <!--Ear and eye-->
+    <polygon points="130,65 170,40 150,90" style="fill:#be7402"></polygon>
+    <ellipse cx="115" cy="80" rx="5" ry="8" class="cat-eye"></ellipse>
+    <!--Right body-->
+    <polygon points="100,100 100,270 125,270 135,250" style="fill:#593701"></polygon>
+    <!--Tail, is drawn before left side to give illusion of it being behind-->
+    <polygon points="58,170 56,180 35,150" style="fill:#8c5602"></polygon>
+    <polygon points="50,210 62,217 58,170" style="fill:#593701"></polygon>
+    <polygon points="68,240 72,220 50,210" style="fill:#a56502"></polygon>
+    <!--Left face-->
+    <polygon points="100,100 100,60 70,65 50,90" style="fill:#a56502"></polygon>
+    <polygon points="50,90 100,115 100,100" style="fill:#734601"></polygon>
+    <!--Ear and eye-->
+    <polygon points="70,65 30,40 50,90" style="fill:#be7402"></polygon>
+    <ellipse cx="85" cy="80" rx="5" ry="8" class="cat-eye"></ellipse>
+    <!--Left body-->
+    <polygon points="100,100 100,270 75,270 65,250" style="fill:#734601"></polygon>
+</svg>

@@ -1,0 +1,33 @@
+.tab {
+    font-weight: bold;
+
+    background-color: #111;
+    color: #FFF;
+
+    z-index: 2;
+
+    margin: 0.5rem 0 0.5rem 3rem;
+    padding: 1rem;
+    display: inline-block;
+    text-align: center;
+    width: 5ch;
+}
+
+.active {
+    font-weight: bold;
+
+    background-color: #0099FF;
+    color: #FFF;
+
+    z-index: 2;
+
+    margin: 0.5rem 0 0.5rem 3rem;
+    padding: 1rem;
+    display: inline-block;
+    text-align: center;
+    width: 5ch;
+}
+
+.tab:active {
+    background-color: #0099FF;
+}
