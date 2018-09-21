@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import ButtonTabs from './components/ButtonTabs.jsx';
 import CheckboxTabs from './components/CheckboxTabs.jsx';
 import ContentBox from './parts/ContentBox.jsx';
 import "./App.css";
 
-const imageDict = {
-                    Animals:'/resources/images/dyr',
-                    BowtieLad:'/resources/images/sloyfegutt',
-                    BlackAndWhite:'/resources/images/svarthvitt'};
+const imageDict = { Animals:'/resources/images/animals',
+                    Gems:'/resources/images/gems',
+                    BlackAndWhite:'/resources/images/black&white'};
 
 const textDict = {  OwenWilson: '/resources/json/wilfredOwen.json',
                     RomanticNationalism: 'resources/json/romanticNationalism.json',
@@ -95,16 +93,16 @@ class App extends Component {
             case 0:
                 break;
             case 1:
-                url = "/img1.jpg";
+                url = "/img1.svg";
                 break;
             case 2:
-                url = "/img2.jpg";
+                url = "/img2.svg";
                 break;
             case 3:
-                url = "/img3.jpg";
+                url = "/img3.svg";
                 break;
             case 4:
-                url = "/img4.jpg";
+                url = "/img4.svg";
                 break;
             default:
                 url = "/";

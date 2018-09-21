@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Image extends Component {
     render() {
-        return <img src={this.props.imageUrl} alt="text"/>
+        return (
+            <div className="Image" dangerouslySetInnerHTML={{__html: props.image}}>
+            </div>)
     }
 }
 
 export default Image;
+
+
