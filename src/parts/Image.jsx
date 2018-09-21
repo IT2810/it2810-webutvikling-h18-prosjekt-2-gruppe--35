@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 /*
 *   The Image.jsx file has the purpose of loading an image when given the proper
@@ -8,10 +8,10 @@ import React, { Component } from 'react';
 class Image extends Component {
     render() {
         return (
-        <div
-            className="graphic"
-            dangerouslySetInnerHTML={{__html:this.props.image}}>
-        </div>
+            <div
+                className="graphic"
+                dangerouslySetInnerHTML={{__html: this.props.image}}>
+            </div>
         );
     }
 }
