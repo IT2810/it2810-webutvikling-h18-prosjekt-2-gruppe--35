@@ -13,21 +13,21 @@ import "./App.css";
 
 //The relative urls for all of the resources used
 const imageDict = {
-    Animals: '/resources/images/animals',
-    Gems: '/resources/images/gems',
-    BlackAndWhite: '/resources/images/black&white'
+    Animals: './resources/images/animals',
+    Gems: './resources/images/gems',
+    BlackAndWhite: './resources/images/black&white'
 };
 
 const textDict = {
-    WilfredOwen: '/resources/json/wilfredOwen/',
-    RomanticNationalism: 'resources/json/romanticNationalism/',
-    Shakespeare: '/resources/json/shakespeare/'
+    WilfredOwen: './resources/json/wilfredOwen/',
+    RomanticNationalism: './resources/json/romanticNationalism/',
+    Shakespeare: './resources/json/shakespeare/'
 };
 
 const soundDict = {
-    ASMR: '/resources/audio/ASMR',
-    Sport: '/resources/audio/sport',
-    Music: '/resources/audio/music'
+    ASMR: './resources/audio/ASMR',
+    Sport: './resources/audio/sport',
+    Music: './resources/audio/music'
 };
 
 
@@ -188,7 +188,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <object data="/resources/logo.svg" type="image/svg+xml">
+                <object data="./resources/logo.svg" type="image/svg+xml">
                 </object>
                 <div className="container">
                     <ButtonTabs className="ImageTabs" onSelected={this.renderUpdate.bind(this)}/>
